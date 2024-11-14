@@ -15,6 +15,8 @@ public class CarUserService implements UserDetailsService{
 	 @Autowired
 	 private CarUserRepository repository;
 	 private String role;
+	 private String email; 
+	 private String userName; 
 	 public void save(CarUser carUser) {
 		 repository.save(carUser);
 	 }
@@ -23,10 +25,19 @@ public class CarUserService implements UserDetailsService{
 		 
 		 CarUser carUser=repository.findById(username).get();
 		 role=carUser.getRole();
+		 userName=carUser.getUsername();
+		 email=carUser.getEmail();
 			return carUser;
 		}
 	 public String getRole() {
 		return role; 
 	 }
+	 public String getUserName() {
+			return userName; 
+		 }
+	 public String getEmail() {
+			return email; 
+		 }
+	 
 	  
 }

@@ -10,7 +10,7 @@ public class Car {
 	private String carName;
 	private String carColor;
 	private String manufacturer;
-	private Integer yearOfMfg;
+	private int yearOfMfg;
 	private Double rentRate;
 	private Boolean available;
 	private String variantId;
@@ -18,7 +18,19 @@ public class Car {
 		super();
 		this.available=true;
 	}
-	public Car(String carNumber, String carName, String carColor, String manufacturer, Integer yearOfMfg, Double rentRate,
+//	public Car(String carNumber, String carName, String carColor, String manufacturer, Integer yearOfMfg, Double rentRate,
+//			Boolean available, String variantId) {
+//		super();
+//		this.carNumber = carNumber;
+//		this.carName = carName;
+//		this.carColor = carColor;
+//		this.manufacturer = manufacturer;
+//		this.yearOfMfg = yearOfMfg;
+//		this.rentRate = rentRate;
+//		this.available = available;
+//		this.variantId = variantId;
+//	}
+	public Car(String carNumber, String carName, String carColor, String manufacturer, int yearOfMfg, Double rentRate,
 			Boolean available, String variantId) {
 		super();
 		this.carNumber = carNumber;
@@ -54,16 +66,16 @@ public class Car {
 	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
-	public Integer getYearOfMfg() {
+	public int getYearOfMfg() {
 		return yearOfMfg;
 	}
-	public void setYearOfMfg(Integer yearOfMfg) {
+	public void setYearOfMfg(int yearOfMfg) {
 		this.yearOfMfg = yearOfMfg;
 	}
 	public Double getRentRate() {
 		return rentRate;
 	}
-	public void setRentRRate(Double rentRate) {
+	public void setRentRate(Double rentRate) {
 		this.rentRate = rentRate;
 	}
 	public Boolean getAvailable() {

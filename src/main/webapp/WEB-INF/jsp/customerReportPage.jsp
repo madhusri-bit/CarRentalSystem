@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Car Report</title>
 <style>
   /* Body and General Styles */
       body {
@@ -98,34 +98,40 @@
 </head>
 <body>
   <div align="center">
-  <h1 color="#fff"><u>Car Variant Report</u></h1>
-  <br/>
-  <h2>
+    <h1><u>Customer Report</u></h1>
+    <br/>
+    <h2>Customer Details</h2>
     <table border="2">
-    <tr>
-    <th>Variant Id</th>
-    <th>Variant Name</th>
-    <th>Number of Seat</th>
-    <th>Fuel Usage</th>
-    <th> Delete Record</th>
-    </tr>
-    
-    <c:forEach items="${variantList }" var ="variant">
-    <tr>
-    <td>${variant.variantId}</td>
-    <td>${variant.variantName}</td>
-    <td>${variant.numberOfSeat}</td>
-    <td>${variant.fuel}</td>
-    <td><a href="/variantDeletion/${variant.variantId}">Variant Deletion</a></td>
-    </tr>
-    </c:forEach>
-    
-    
+      <tr>
+        <th>User Name</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Mobile Number</th>
+        <th>License Number</th>
+        <th>License Expiry Date</th>
+        <th>Status</th>
+        <th>Customer Updation</th>
+        <th>Customer Deletion</th>
+      </tr>
+      <c:forEach items="${customerList}" var="cus">
+        <tr>
+          <td>${cus.username}</td>
+          <td>${cus.firstName}</td>
+          <td>${cus.lastName}</td>
+          <td>${cus.address}</td>
+          <td>${cus.email}</td>
+          <td>${cus.mobile}</td>
+          <td>${cus.license}</td>
+          <td>${cus.experiryDate}</td>
+          <td>${cus.status}</td>
+          <td><a href="/customerUpdate/${cus.username}">Update Details</a></td>
+          <td><a href="/customerDelete/${cus.username}">Delete User</a></td>
+        </tr>
+      </c:forEach>
     </table>
-  </h2>
-  <br/>
-  <h3 color="#fff"><a href="/index">Return</a></h3>
-  
+    <h3><a href="/index">Return</a></h3>
   </div>
 </body>
 </html>

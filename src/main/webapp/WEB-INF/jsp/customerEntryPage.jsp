@@ -107,28 +107,30 @@
 
 <body>
   <div align="center">
-  <h1><u>Car Entry Page</u></h1>
+  <h1><u>Customer Entry Page</u></h1>
   <h2>
-  <form:form action="/carAdd" method="post" modelAttribute="carRecord">
-        <form:hidden path="available"/>
-  		Enter Car Registration Number:<form:input path="carNumber" />
+  <form:form action="/customerAdd" method="post" modelAttribute="customerRecord">
+            <form:hidden path="username"/>
+                <form:hidden path="email"/>
+                <form:hidden path="status"/>
+  		User Name<form:input path="username" disabled="true" />
   		<br/><br/>
-  		Enter Car Name: <form:input path="carName" />
+  		Email: <form:input path="email" disabled="true"/>
   		<br/><br/>
-  		Enter Car color: <form:input path="carColor" />
+  		Enter First Name: <form:input path="firstName" />
   		<br/><br/>
-  		Enter Manufacturer Name:<form:input path="manufacturer" />
+  		Enter Last Name:<form:input path="lastName" />
   		<br/><br/>
-  		Enter Year of Manufacture: <form:input path="yearOfMfg" />
+  		Enter Address: <form:input path="address" />
   		<br/><br/>
-  		Enter Rent Rate/Hour: <form:input path="rentRate" />
+  		Enter Mobile Number: <form:input path="mobile" />
   		<br/><br/>
-  		Select Variant Id<form:input list="variants" path="variantId"/>
-  		<datalist id="variants">
-  		<c:forEach items="${variantIdList }" var="vids">
-  		<option value="${vids}"></option>
-  		</c:forEach>
-  		</datalist>
+  		Enter License Number: <form:input path="license" />
+  		<br/><br/>
+  		Status:<form:input path="status" disabled="true"/>
+  		<br/><br/>
+  		Enter License Expiry Date: <form:input type="date" placeholder="dd-mm-yyyy" path="experiryDate" />
+  		<br/><br/>
   		<button type="submit">Submit</button>
   		<button type="reset">Reset</button>
   </form:form>

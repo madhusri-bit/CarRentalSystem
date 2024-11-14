@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Car Report</title>
 <style>
   /* Body and General Styles */
       body {
@@ -98,34 +98,57 @@
 </head>
 <body>
   <div align="center">
-  <h1 color="#fff"><u>Car Variant Report</u></h1>
-  <br/>
-  <h2>
+    <h1 color="#fff"><u>Car Report</u></h1>
+    <br/>
+    <h2 color="#fff">Car Details</h2>
     <table border="2">
-    <tr>
-    <th>Variant Id</th>
-    <th>Variant Name</th>
-    <th>Number of Seat</th>
-    <th>Fuel Usage</th>
-    <th> Delete Record</th>
-    </tr>
-    
-    <c:forEach items="${variantList }" var ="variant">
-    <tr>
-    <td>${variant.variantId}</td>
-    <td>${variant.variantName}</td>
-    <td>${variant.numberOfSeat}</td>
-    <td>${variant.fuel}</td>
-    <td><a href="/variantDeletion/${variant.variantId}">Variant Deletion</a></td>
-    </tr>
-    </c:forEach>
-    
-    
+      <tr>
+        <th>Car Number</th>
+        <th>Car Name</th>
+        <th>Car Color</th>
+        <th>Manufacturer</th>
+        <th>MFG Year</th>
+        <th>Variant Details</th>
+        <th>Rent/Hour</th>
+        <th>Available</th>
+        <th>Deletion</th>
+        <th>Updation</th>
+      </tr>
+      <c:forEach items="${carList}" var="car">
+        <tr>
+          <td>${car.carNumber}</td>
+          <td>${car.carName}</td>
+          <td>${car.carColor}</td>
+          <td>${car.manufacturer}</td>
+          <td>${car.yearOfMfg}</td>
+          <td>
+            <table>
+              <c:forEach items="${variantMap}" var="cmp">
+                <c:if test="${car.variantId==cmp.key}">
+                  <tr>
+                    <td>Variant Name:</td>
+                    <td>${cmp.value.variantName}</td>
+                  </tr>
+                  <tr>
+                    <td>Number of Seats:</td>
+                    <td>${cmp.value.numberOfSeat}</td>
+                  </tr>
+                  <tr>
+                    <td>Fuel:</td>
+                    <td>${cmp.value.fuel}</td>
+                  </tr>
+                </c:if>
+              </c:forEach>
+            </table>
+          </td>
+          <td>${car.rentRate}</td>
+          <td>${car.available}</td>
+          <td><a href="/carDeletion/${car.carNumber}">Car Deletion</a></td>
+          <td><a href="/carUpdate/${car.carNumber}">Car Update</a></td>
+        </tr>
+      </c:forEach>
     </table>
-  </h2>
-  <br/>
-  <h3 color="#fff"><a href="/index">Return</a></h3>
-  
+    <h3 color="#fff"><a href="/index">Return</a></h3>
   </div>
 </body>
 </html>

@@ -11,4 +11,6 @@ public class CarRentalSystemApplication {
 	}
 	//id:Lotus,password:Mango,Role:Admin
 	//id:Tulip,password:Apple,Role:Customer
+	//id:Mariegold,password:Cherry,Role:Customer
+	//id:Jasmine,password:Orange,Role:Customer
 }

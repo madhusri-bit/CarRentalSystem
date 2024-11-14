@@ -9,99 +9,100 @@
 <title>Insert title here</title>
 </head>
 <style>
-/* Basic reset for margin and padding */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  /* Body and Background */
+  body {
+    background-image: url('https://images2.alphacoders.com/997/997526.jpg'); /* Replace with your background image path if any */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+  }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-}
+  /* Centered Container */
+  div[align="center"] {
+    width: 800px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: rgba(51, 51, 51, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 98, 0, 0.7);
+    text-align: center;
+  }
 
-/* Centering the form */
-div[align="center"] {
-  max-width: 500px;
-  margin: 5% auto;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
+  /* Header Styles */
+  h1 {
+    font-size: 2em;
+    color: #ff6200;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
 
-/* Styling the form header */
-h2 {
-  text-align: center;
-  font-size: 24px;
-  color: #4CAF50;
-  margin-bottom: 20px;
-}
+  h2 {
+    font-size: 1.2em;
+    color: #ff6200;
+    margin-bottom: 15px;
+  }
 
-/* Form fields styling */
-form input[type="text"],
-form input[type="password"],
-form input[list],
-form input[type="email"],
-form select {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-}
+  /* Form Styles */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-/* Styling buttons */
-button[type="button"],
-button[type="reset"] {
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  /* Input Field Styles */
+  form input[type="text"],
+  form input[type="number"],
+  form input[list] {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ff6200;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1em;
+    text-align: center;
+  }
 
-button[type="button"] {
-  background-color: #4CAF50;
-  color: #ffffff;
-}
+  /* Button Styles */
+  form button {
+    width: 45%;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6200;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-button[type="button"]:hover {
-  background-color: #45a049;
-}
+  form button[type="reset"] {
+    background-color: #333;
+    border: 1px solid #ff6200;
+  }
 
-button[type="reset"] {
-  background-color: #f44336;
-  color: #ffffff;
-  margin-left: 10px;
-}
+  form button:hover {
+    background-color: #e55d00;
+  }
 
-button[type="reset"]:hover {
-  background-color: #e53935;
-}
+  form button[type="reset"]:hover {
+    background-color: #444;
+  }
 
-/* Improving the spacing and alignment */
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form input[type="text"],
-form input[type="password"],
-form input[type="email"],
-form input[list] {
-  margin-top: 8px;
-  font-size: 14px;
-}
-
-form br {
-  display: none;
-}
-
+  /* Label Styling */
+  label {
+    font-size: 1em;
+    color: #ff6200;
+    text-align: left;
+    margin-bottom: 5px;
+  }
 </style>
 <body>
   <div align="center">

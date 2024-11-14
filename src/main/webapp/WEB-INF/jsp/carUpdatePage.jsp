@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
@@ -104,35 +104,42 @@
   }
 </style>
 </head>
-
 <body>
-  <div align="center">
-  <h1><u>Car Entry Page</u></h1>
-  <h2>
-  <form:form action="/carAdd" method="post" modelAttribute="carRecord">
-        <form:hidden path="available"/>
-  		Enter Car Registration Number:<form:input path="carNumber" />
-  		<br/><br/>
-  		Enter Car Name: <form:input path="carName" />
-  		<br/><br/>
-  		Enter Car color: <form:input path="carColor" />
-  		<br/><br/>
-  		Enter Manufacturer Name:<form:input path="manufacturer" />
-  		<br/><br/>
-  		Enter Year of Manufacture: <form:input path="yearOfMfg" />
-  		<br/><br/>
-  		Enter Rent Rate/Hour: <form:input path="rentRate" />
-  		<br/><br/>
-  		Select Variant Id<form:input list="variants" path="variantId"/>
-  		<datalist id="variants">
-  		<c:forEach items="${variantIdList }" var="vids">
-  		<option value="${vids}"></option>
-  		</c:forEach>
-  		</datalist>
-  		<button type="submit">Submit</button>
-  		<button type="reset">Reset</button>
-  </form:form>
-  </h2>
-  </div>
+<div align="center">
+
+<h1><u>Car Update Page</u></h1>
+<h2>
+<form:form action="/carUpdate" method="post" modelAttribute="carRecord">
+<form:hidden path="carNumber" />
+<form:hidden path="carName" />
+<form:hidden path="carColor" />
+<form:hidden path="manufacturer" />
+<form:hidden path="variantId" />
+<form:hidden path="yearOfMfg" />
+Car Registration Number: <form:input path="carNumber" disabled="true"/> <br/><br/>
+Car Name: <form:input path="carName" disabled="true"/>
+<br/><br/>
+Car Color: <form:input path="carColor" disabled="true"/>
+<br/><br/>
+Manufacturer Name: <form:input path="manufacturer" disabled="true"/>
+<br/><br/>
+Variant Id<form:input list="variants" path="variantId" disabled="true"/>
+<br/><br/>
+Year of Manufacture: <form:input path="yearOfMfg" disabled="true"/> <br/><br>
+Enter New  Rent Rate/hour: <form:input path="rentRate"/>
+<br/><br>
+Enter New Availability Status:<form:input path="available"/>
+
+<datalist id="variants">
+<c:forEach items="${variantIdList}" var="vids">
+<option value="${vids}">
+</option>
+</c:forEach>
+</datalist>
+<br/><br>
+<button type="submit">Submit</button>
+<button type="reset">Reset</button>
+
+</form:form>
 </body>
-</html >
+</html>
