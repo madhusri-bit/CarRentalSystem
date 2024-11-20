@@ -129,7 +129,7 @@ h1 {
     <div class="dropdown">
       <button class="dropbtn">Car</button>
       <div class="dropdown-content">
-        <a href="/carReport">Car Report</a>
+        <a href="/customerCarReport">Car Report</a>
       </div>
     </div>
 

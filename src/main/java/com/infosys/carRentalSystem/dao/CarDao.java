@@ -12,4 +12,6 @@ public interface CarDao {
 	public List<Car> findAll();
 
 	public void deleteCarById(String id);
+
+	public List<Car> getAvailableCars();
 }

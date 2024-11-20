@@ -6,10 +6,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.infosys.carRentalSystem.bean.Car;
@@ -19,10 +22,13 @@ import com.infosys.carRentalSystem.dao.CarDao;
 import com.infosys.carRentalSystem.dao.CarUserRepository;
 import com.infosys.carRentalSystem.dao.CarVariantDao;
 import com.infosys.carRentalSystem.dao.CustomerDao;
+import com.infosys.carRentalSystem.exception.CustomerLicenceException;
+import com.infosys.carRentalSystem.exception.CustomerStatusException;
 import com.infosys.carRentalSystem.service.CarUserService;
+import com.infosys.carRentalSystem.service.CustomerService;
 
-@Controller
-
+@RestController
+@ControllerAdvice
 public class carRentController {
 	@Autowired
 	private CarVariantDao carVariantDao;
@@ -38,6 +44,9 @@ public class carRentController {
 	
 	@Autowired
 	private CarUserRepository repository;
+	
+	@Autowired
+	private CustomerService custService;
 	
   @GetMapping("/variantAdd")
   public ModelAndView showVariantEntryPage() {
@@ -110,22 +119,35 @@ public class carRentController {
 	  return new ModelAndView("redirect:/variantReport");
   }
   
+  @GetMapping("/customerCarReport")
+  public ModelAndView showCustomerCarReportPage() {
+	  String username=service.getUserName();
+	  boolean status=customerDao.getCustomerStatusByUsername(username);
+	  if(!status)
+		  throw new CustomerStatusException();
+	  String licenceExpiryDate=customerDao.getLicenceExpiryDate(username);
+	  if(!custService.validateCustomerLicenceDate(licenceExpiryDate))
+		  throw new CustomerLicenceException();
+	  List<Car> carList=carDao.getAvailableCars();
+	  List <CarVariant> variantList=carVariantDao.findAll();
+	  Map<String,CarVariant> variantMap=new HashMap<>();
+	  for(CarVariant cv: variantList) {
+		  variantMap.put(cv.getVariantId(),cv);
+	  }
+	  ModelAndView mv=new ModelAndView("carReportPage2");
+	  mv.addObject("carList",carList);
+	  mv.addObject("variantMap", variantMap);
+	  return mv;
+  }
   @GetMapping("/carReport")
   public ModelAndView showCarReportPage () {
-  String role=service.getRole();
-  String page="";
-  if(role.equalsIgnoreCase("Admin"))
-  page="carReportPage1";
-  else if (role.equalsIgnoreCase("Customer"))
-  page="carReportPage2";
-  
   List<Car> carList=carDao.findAll();
   List<CarVariant> variantList=carVariantDao.findAll();
   Map<String, CarVariant> variantMap=new HashMap<>();
   for (CarVariant cv:variantList) { 
 	  variantMap.put(cv.getVariantId(), cv);
    }
-   ModelAndView mv= new ModelAndView(page); 
+   ModelAndView mv= new ModelAndView("carReportPage1"); 
    mv.addObject("carList", carList);
    mv.addObject("variantMap", variantMap);
    return mv;
@@ -176,5 +198,22 @@ public class carRentController {
 	  customerDao.deleteCustomerById(id); 
 	  repository.deleteById(id);
 	  return new ModelAndView("redirect:/customerReport");
+  }
+  
+  @ExceptionHandler(CustomerStatusException.class)
+  public ModelAndView handleCustomerStatusException(CustomerStatusException exception)
+  {
+	  String message="Sorry Dear Customer, Need to complete last booking & payment procedures";
+	  ModelAndView mv=new ModelAndView("carBookingErrorPage");
+	  mv.addObject("errorMessage",message);
+	  return mv;
+  }
+  @ExceptionHandler(CustomerLicenceException.class)
+  public ModelAndView handleCustoomerLicenceException(CustomerLicenceException exception)
+  {
+	  String message="Sorry Dear Customer, Need to renew your Licence";
+	  ModelAndView mv=new ModelAndView("carBookingErrorPage");
+	  mv.addObject("errorMessage",message);
+	  return mv;
   }
 }

@@ -33,4 +33,7 @@ public class CarDaoImpl implements CarDao {
 	{ 
 		repository.deleteById(id);
 	}
+    public List<Car> getAvailableCars(){
+    	return repository.getAvailableCars();
+    }
 }
