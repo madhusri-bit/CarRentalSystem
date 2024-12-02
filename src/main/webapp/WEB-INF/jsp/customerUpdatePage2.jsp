@@ -19,8 +19,6 @@
     font-family: Arial, sans-serif;
     color: #fff;
   }
-
-  /* Centered Container */
   div[align="center"] {
     width: 800px;
     margin: 100px auto;
@@ -30,12 +28,9 @@
     box-shadow: 0 0 15px rgba(255, 98, 0, 0.7);
     text-align: center;
   }
-
-  /* Header Styles */
   h1 {
     font-size: 2em;
-    color: #ff6200;
-    text-transform: uppercase;
+    color: #fffff;
     margin-bottom: 20px;
   }
 
@@ -102,12 +97,23 @@
     text-align: left;
     margin-bottom: 5px;
   }
+   form input[type="date"] {
+    width: 90%; /* Match the size of other input fields */
+    padding: 12px; /* Same padding for uniformity */
+    margin: 10px 0;
+    border: 1px solid #ff6200;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1em;
+    text-align: center; /* Align the placeholder text */
+  }
 </style>
 </head>
 
 <body>
   <div align="center">
-  <h1><u>Customer Update Page</u></h1>
+  <h1>Update your details!!!</h1>
   <h2>
   <form:form action="/customerUpdate" method="post" modelAttribute="customerRecord">
                 <form:hidden path="username"/>
@@ -122,9 +128,9 @@
   		<br/><br/>
   		First Name: <form:input path="firstName" disabled="true"/>
   		<br/><br/>
-  		Update Last Name:<form:input path="lastName" />
+  		Update your Last Name:<form:input path="lastName" />
   		<br/><br/>
-  		Update Address: <form:input path="address" />
+  		Update your Address: <form:input path="address" />
   		<br/><br/>
   		Mobile Number: <form:input path="mobile" disabled="true"/>
   		<br/><br/>
@@ -132,9 +138,9 @@
   		<br/><br/>
   		Update Status:<form:input path="status" disabled="true"/>
   		<br/><br/>
-  		 Update License Expiry Date: <br/><form:input type="date" placeholder="dd-mm-yyyy" path="experiryDate" />
+  		 Update License Expiry Date: <br/><br/><br/><form:input type="date" placeholder="dd-mm-yyyy" path="experiryDate" />
   		<br/><br/>
-  		<button type="submit">Submit</button>
+  		<button type="submit">Save your changes</button>
   		<button type="reset">Reset</button>
   </form:form>
   </h2>

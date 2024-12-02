@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -136,8 +136,8 @@ h1 {
     <div class="dropdown">
       <button class="dropbtn">Booking</button>
       <div class="dropdown-content">
-        <a href="/">New Booking</a>
-        <a href="/">Booking Update</a>
+        <a href="/customerCarReport">New Booking</a>
+        <a href="/bookingReport">Booking Reports </a>
         <a href="/">Cancellation</a>
       </div>
     </div>

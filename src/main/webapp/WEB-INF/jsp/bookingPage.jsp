@@ -19,8 +19,6 @@
     font-family: Arial, sans-serif;
     color: #fff;
   }
-
-  /* Centered Container */
   div[align="center"] {
     width: 800px;
     margin: 100px auto;
@@ -30,12 +28,9 @@
     box-shadow: 0 0 15px rgba(255, 98, 0, 0.7);
     text-align: center;
   }
-
-  /* Header Styles */
   h1 {
     font-size: 2em;
-    color: #ff6200;
-    text-transform: uppercase;
+    color: #fffff;
     margin-bottom: 20px;
   }
 
@@ -102,7 +97,7 @@
     text-align: left;
     margin-bottom: 5px;
   }
-  form input[type="date"] {
+   form input[type="date"] {
     width: 90%; /* Match the size of other input fields */
     padding: 12px; /* Same padding for uniformity */
     margin: 10px 0;
@@ -115,37 +110,43 @@
   }
 </style>
 </head>
-
 <body>
-  <div align="center">
-  <h1>Enter your details</h1>
-  <h2>
-  <form:form action="/customerAdd" method="post" modelAttribute="customerRecord">
-            <form:hidden path="username"/>
-                <form:hidden path="email"/>
-                <form:hidden path="status"/>
-  		User Name<form:input path="username" disabled="true" />
-  		<br/><br/>
-  		Email: <form:input path="email" disabled="true"/>
-  		<br/><br/>
-  		Enter First Name: <form:input path="firstName" />
-  		<br/><br/>
-  		Enter Last Name:<form:input path="lastName" />
-  		<br/><br/>
-  		Enter Address: <form:input path="address" />
-  		<br/><br/>
-  		Enter Mobile Number: <form:input path="mobile" />
-  		<br/><br/>
-  		Enter License Number: <form:input path="license" />
-  		<br/><br/>
-  		Status:<form:input path="status" disabled="true"/>
-  		<br/><br/>
-  		Enter License Expiry Date: <form:input type="date" placeholder="dd-mm-yyyy" path="experiryDate" />
-  		<br/><br/>
-  		<button type="submit">Submit</button>
-  		<button type="reset">Reset</button>
-  </form:form>
-  </h2>
-  </div>
+<div class="form-container">
+        <h2 class="form-heading">New Booking</h2>
+
+        <form:form action="/createBooking" method="post" modelAttribute="carBooking">
+            <form:hidden path="bookingId" />
+            <form:hidden path="carNumber" />
+            <form:hidden path="username" />
+
+            <label class="label" for="bookingId">Booking Id:</label>
+            <form:input path="bookingId" id="bookingId" class="input" placeholder="bookingId" disabled="true"/>
+            <br /><br />
+
+            <label class="label" for="carNumber">Car Number:</label>
+            <form:input path="carNumber" id="carNumber" class="input" placeholder="carNumber" disabled="true"/>
+            <br /><br />
+
+            <label class="label" for="username">Username:</label>
+            <form:input path="username" id="username" class="input" placeholder="username" disabled="true"/>
+            <br /><br />
+
+            <label class="label" for="rentRate">Rent Rate (per day):</label>
+            <input type="text" id="rentRate" value="${rentRate}" disabled="true" class="input" />
+            <br /><br />
+
+            <label class="label" for="fromDate">Enter fromDate:</label>
+            <form:input type="date" placeholder="dd-mm-yyyy" path="fromDate" />
+           
+            <br /><br />
+
+            <label class="label" for="toDate">Enter toDate:</label>
+            <form:input type="date" placeholder="dd-mm-yyyy" path="toDate" />
+            
+            <br /><br />
+
+            <button class="submit-button btn" type="submit">Proceed to Payment</button>
+        </form:form>
+    </div>
 </body>
-</html >
+</html>

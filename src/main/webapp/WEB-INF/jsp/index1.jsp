@@ -146,10 +146,10 @@ h1 {
     <div class="dropdown">
       <button class="dropbtn">Booking</button>
       <div class="dropdown-content">
-        <a href="/">New Booking</a>
-        <a href="/">Booking Update</a>
-        <a href="/">Cancellation</a>
-        <a href="/">Booking Report</a>
+       
+        <a href="/bookingPayments">Booking Payments</a>
+       
+        <a href="/bookingReport">Booking Reports</a>
       </div>
     </div>
     <a href="/logout">Logout</a>

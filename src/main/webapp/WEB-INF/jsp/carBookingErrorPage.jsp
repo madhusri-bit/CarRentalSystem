@@ -12,7 +12,9 @@
 <div align="center">
 <h1>${errorMessage }</h1>
 <br>
-<h3><a href="/index">Return</a></h3>
+<h3><a href="/index">Return to Home</a></h3>
+<br><br>
+<a href="${redirectLink}" class="link-button action-link">${linkText}</a>
 </div>
 </body>
 </html>

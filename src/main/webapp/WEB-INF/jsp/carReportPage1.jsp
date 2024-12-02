@@ -109,7 +109,7 @@
         <th>Manufacturer</th>
         <th>MFG Year</th>
         <th>Variant Details</th>
-        <th>Rent/Hour</th>
+        <th>Rent/Day</th>
         <th>Available</th>
         <th>Deletion</th>
         <th>Updation</th>
@@ -141,8 +141,13 @@
               </c:forEach>
             </table>
           </td>
-          <td>${car.rentRate}</td>
-          <td>${car.available}</td>
+          <td>₹${car.rentRate}/day</td>
+          <td>
+                        <c:choose>
+                            <c:when test="${car.available == true}">Available</c:when>
+                            <c:otherwise>Not Available</c:otherwise>
+                        </c:choose>
+                    </td>
           <td><a href="/carDeletion/${car.carNumber}">Car Deletion</a></td>
           <td><a href="/carUpdate/${car.carNumber}">Car Update</a></td>
         </tr>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Car Report</title>
+<title>Your Profile</title>
 <style>
   /* Body and General Styles */
       body {
@@ -28,14 +28,7 @@
   /* Header Styles */
   h1 {
     font-size: 2.5em;
-    color: #ff6200;
-    text-decoration: underline;
-    margin-top: 20px;
-  }
-
-  h2 {
-    font-size: 1.5em;
-    color: #ff6200;
+    color: #ffffff;
     margin-top: 20px;
   }
 
@@ -57,13 +50,14 @@
   }
 
   th {
-    background-color: #ff6200;
+     color:#ff6200;
+    background-color: #00000;
     font-weight: bold;
   }
 
   /* Link Styles */
   a {
-    color: #ff6200;
+    color: #ffffff;
     text-decoration: none;
   }
 
@@ -98,37 +92,49 @@
 </head>
 <body>
   <div align="center">
-    <h1 color="#fff"><u>Customer Report</u></h1>
-    <br/>
-    <h2 color="#fff">Customer Details</h2>
-    <table border="2">
+    <h1 color="#fff"><u>Hello ${customer.username}!!!</u></h1>
+    
+    
+    <table border="4">
       <tr>
         <th>User Name</th>
+        <td>${customer.username}</td>
+       </tr>
+       <tr>
         <th>First Name</th>
+        <td>${customer.firstName}</td>
+        </tr>
+        <tr>
         <th>Last Name</th>
+        <td>${customer.lastName}</td>
+        </tr>
+        <tr>
         <th>Address</th>
+        <td>${customer.address}</td>
+        </tr>
+        <tr>
         <th>Email</th>
+        <td>${customer.email}</td>
+        </tr>
+        <tr>
         <th>Mobile Number</th>
+        <td>${customer.mobile}</td>
+        </tr>
+        <tr>
         <th>License Number</th>
+        <td>${customer.license}</td>
+        </tr>
+        <tr>
         <th>License Expiry Date</th>
+        <td>${customer.experiryDate}</td>
+        </tr>
+        <tr>
         <th>Status</th>
-        <th>Update Details</th>
-      </tr>
-      <tr>
-  		<td>${customer.username}</td>
-  		<td>${customer.firstName}</td>
-  		<td>${customer.lastName}</td>
-  		<td>${customer.address}</td>
-  		<td>${customer.email}</td>
-  		<td>${customer.mobile}</td>
-  		<td>${customer.license}</td>
-  		<td>${customer.experiryDate}</td>
-  		<td>${customer.status}</td>
-  		<td><a href="/customerUpdate/${customer.username}">Update Details</a></td>
-</tr>
-
-    </table>
-    <h3 color="#fff"><a href="/index">Return</a></h3>
+        <td>${customer.status}</td>
+        </tr>
+        </table>
+        <h3><a href="/customerUpdate/${customer.username}">Want to update your details?</a></h3>
+        <h3><a href="/index">Return</a></h3>
   </div>
 </body>
 </html>
